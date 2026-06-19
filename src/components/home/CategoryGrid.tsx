@@ -6,6 +6,7 @@ import { categories } from '@/lib/data';
 import { useStore } from '@/store/useStore';
 import { useRouter } from 'next/navigation';
 import { Card } from '@/components/ui/card';
+import SectionHeader from '@/components/shared/SectionHeader';
 
 const iconMap: Record<string, React.ElementType> = {
   Lightbulb,
@@ -28,17 +29,10 @@ export default function CategoryGrid() {
   return (
     <section className="py-20 bg-surface">
       <div className="container mx-auto px-4">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-12"
-        >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Browse by Category</h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
-            Find the perfect lighting solution for every space and requirement
-          </p>
-        </motion.div>
+        <SectionHeader
+          title="Browse by Category"
+          subtitle="Find the perfect lighting solution for every space and requirement"
+        />
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {categories.map((category, index) => {
@@ -52,21 +46,21 @@ export default function CategoryGrid() {
                 transition={{ delay: index * 0.1 }}
               >
                 <Card
-                  className="group relative p-6 cursor-pointer hover:shadow-xl transition-all duration-300 border-2 border-transparent hover:border-amber-500/30"
+                  className="group relative p-6 cursor-pointer hover:shadow-xl transition-all duration-300 border border-border/50 hover:border-primary/30 bg-card"
                   onClick={() => handleCategoryClick(category.id)}
                 >
                   <div className="flex items-start justify-between">
-                    <div className="p-3 rounded-xl bg-amber-500/10 text-amber-500 group-hover:bg-amber-500 group-hover:text-white transition-colors">
+                    <div className="p-3 rounded-xl bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
                       <Icon className="h-6 w-6" />
                     </div>
                     <ArrowUpRight className="h-5 w-5 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity" />
                   </div>
-
-                  <h3 className="text-xl font-semibold mt-4 mb-2">{category.name}</h3>
+                  
+                  <h3 className="text-xl font-semibold mt-4 mb-2 text-card-foreground">{category.name}</h3>
                   <p className="text-sm text-muted-foreground mb-4">{category.description}</p>
-
+                  
                   <div className="flex items-center justify-between">
-                    <span className="text-sm font-medium text-amber-500">
+                    <span className="text-sm font-medium text-primary">
                       {category.productCount} Products
                     </span>
                   </div>

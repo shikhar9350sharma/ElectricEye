@@ -9,6 +9,8 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import Link from 'next/link';
 
+
+
 interface ProductCardProps {
   product: Product;
   index: number;
@@ -25,6 +27,7 @@ export default function ProductCard({ product, index }: ProductCardProps) {
       viewport={{ once: true }}
       transition={{ delay: index * 0.05 }}
     >
+  
       <Card className="group overflow-hidden border border-border/50 hover:border-primary/30 hover:glow-amber transition-all duration-300 bg-card">
         {/* Image Area */}
         <div className="relative h-56 bg-muted/50 flex items-center justify-center overflow-hidden">

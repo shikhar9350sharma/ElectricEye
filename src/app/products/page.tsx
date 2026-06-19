@@ -1,50 +1,39 @@
 'use client';
 
-import { useMemo } from 'react';
-import { products } from '@/lib/data';
-import { useStore } from '@/store/useStore';
-import ProductCard from '@/components/products/ProductCard';
-import ProductFilter from '@/components/products/ProductFilter';
 import { motion } from 'framer-motion';
+import { products } from '@/lib/data';
+import ProductCard from '@/components/products/ProductCard';
+import { Button } from '@/components/ui/button';
+import Link from 'next/link';
+import { ArrowRight } from 'lucide-react';
+import SectionHeader from '@/components/shared/SectionHeader';
 
-export default function ProductsPage() {
-  const { searchQuery, selectedCategory } = useStore();
-
-  const filteredProducts = useMemo(() => {
-    return products.filter((product) => {
-      const matchesSearch = product.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        product.description.toLowerCase().includes(searchQuery.toLowerCase());
-      const matchesCategory = !selectedCategory || product.category === selectedCategory;
-      return matchesSearch && matchesCategory;
-    });
-  }, [searchQuery, selectedCategory]);
+export default function FeaturedProducts() {
+  const featured = products.slice(0, 4);
 
   return (
-    <div className="container mx-auto px-4 py-12">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        className="mb-8"
-      >
-        <h1 className="text-3xl md:text-4xl font-bold mb-2">All Products</h1>
-        <p className="text-muted-foreground">
-          {filteredProducts.length} products available
-        </p>
-      </motion.div>
-
-      <ProductFilter />
-
-      {filteredProducts.length === 0 ? (
-        <div className="text-center py-20">
-          <p className="text-muted-foreground text-lg">No products found matching your criteria.</p>
+    <section className="py-20">
+      <div className="container mx-auto px-4">
+        <div className="flex items-end justify-between mb-12">
+          <SectionHeader
+            title="Featured Products"
+            subtitle="Handpicked lighting solutions for you"
+            centered={false}
+            className="mb-0"
+          />
+          <Link href="/products" className="hidden sm:block">
+            <Button variant="ghost" className="flex items-center gap-2 text-primary hover:text-primary/80">
+              View All <ArrowRight className="h-4 w-4" />
+            </Button>
+          </Link>
         </div>
-      ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {filteredProducts.map((product, index) => (
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {featured.map((product, index) => (
             <ProductCard key={product.id} product={product} index={index} />
           ))}
         </div>
-      )}
-    </div>
+      </div>
+    </section>
   );
 }
