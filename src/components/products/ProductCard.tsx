@@ -25,22 +25,22 @@ export default function ProductCard({ product, index }: ProductCardProps) {
       viewport={{ once: true }}
       transition={{ delay: index * 0.05 }}
     >
-      <Card className="group overflow-hidden border hover:shadow-xl transition-all duration-300">
+      <Card className="group overflow-hidden border border-border/50 hover:border-primary/30 hover:glow-amber transition-all duration-300 bg-card">
         {/* Image Area */}
-        <div className="relative h-56 bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-800 dark:to-slate-900 flex items-center justify-center overflow-hidden">
+        <div className="relative h-56 bg-muted/50 flex items-center justify-center overflow-hidden">
           <motion.div
             whileHover={{ scale: 1.1, rotate: 5 }}
             transition={{ type: 'spring', stiffness: 300 }}
           >
             <Lightbulb className="h-20 w-20 text-amber-500/40" />
           </motion.div>
-          
+
           {product.badge && (
             <Badge className="absolute top-3 left-3 bg-amber-500 text-slate-950 font-semibold">
               {product.badge}
             </Badge>
           )}
-          
+
           <Button
             variant="ghost"
             size="icon"
@@ -52,7 +52,7 @@ export default function ProductCard({ product, index }: ProductCardProps) {
           >
             <Heart className={`h-4 w-4 ${isWishlisted ? 'fill-current' : ''}`} />
           </Button>
-          
+
           {/* Quick Add Overlay */}
           <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center pb-4">
             <Button
@@ -76,15 +76,15 @@ export default function ProductCard({ product, index }: ProductCardProps) {
               <span className="text-sm font-medium">{product.rating}</span>
               <span className="text-xs text-muted-foreground ml-1">({product.wattage})</span>
             </div>
-            
+
             <h3 className="font-semibold text-lg mb-1 group-hover:text-amber-500 transition-colors">
               {product.name}
             </h3>
-            
+
             <p className="text-sm text-muted-foreground line-clamp-2 mb-3">
               {product.description}
             </p>
-            
+
             <div className="flex items-center justify-between">
               <div className="flex items-baseline gap-1">
                 <span className="text-2xl font-bold text-amber-500">₹{product.price}</span>
@@ -93,7 +93,7 @@ export default function ProductCard({ product, index }: ProductCardProps) {
                 {product.inStock ? 'In Stock' : 'Out of Stock'}
               </span>
             </div>
-            
+
             {/* Specs Pills */}
             <div className="flex flex-wrap gap-2 mt-4">
               <span className="text-xs px-2 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400">

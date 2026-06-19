@@ -46,10 +46,10 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="bg-slate-950 text-slate-300 border-t border-slate-800">
+    <footer className="bg-background text-muted-foreground border-t border-border/50">
       <div className="container mx-auto px-4 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
-          
+
           {/* Brand */}
           <div className="space-y-4">
             <Link href="/" className="flex items-center gap-2">
@@ -59,7 +59,7 @@ export default function Footer() {
               </span>
             </Link>
             <p className="text-sm leading-relaxed text-slate-400">
-              Premium lighting solutions for homes, offices, and industries. 
+              Premium lighting solutions for homes, offices, and industries.
               Energy-efficient, durable, and designed for modern living.
             </p>
             <div className="flex gap-3">
@@ -68,7 +68,7 @@ export default function Footer() {
                   key={label}
                   href="#"
                   aria-label={label}
-                  className="h-9 w-9 rounded-full bg-slate-800 flex items-center justify-center hover:bg-amber-500 hover:text-slate-950 transition-colors"
+                  className="h-9 w-9 rounded-full bg-muted flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-all duration-300"
                 >
                   <Icon className="h-4 w-4" />
                 </a>
@@ -82,7 +82,7 @@ export default function Footer() {
             <ul className="space-y-3 text-sm">
               {['Home', 'Products', 'About Us', 'Contact', 'Blog'].map((item) => (
                 <li key={item}>
-                  <Link href={item === 'Home' ? '/' : `/${item.toLowerCase().replace(' ', '-')}`} 
+                  <Link href={item === 'Home' ? '/' : `/${item.toLowerCase().replace(' ', '-')}`}
                     className="hover:text-amber-500 transition-colors">
                     {item}
                   </Link>

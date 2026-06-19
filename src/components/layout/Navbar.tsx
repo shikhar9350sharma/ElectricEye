@@ -19,7 +19,7 @@ export default function Navbar() {
     <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      className="sticky top-0 z-50 w-full border-b bg-background/80 backdrop-blur-md"
+      className="sticky top-0 z-50 w-full border-b border-border/50 glass"
     >
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
         {/* Logo */}
@@ -52,7 +52,7 @@ export default function Navbar() {
 
         {/* Actions */}
         <div className="flex items-center gap-3">
-          <ThemeToggle /> 
+          <ThemeToggle />
           {/* Search */}
           <AnimatePresence>
             {isSearchOpen ? (
@@ -72,7 +72,7 @@ export default function Navbar() {
               </motion.div>
             ) : null}
           </AnimatePresence>
-          
+
           <Button
             variant="ghost"
             size="icon"

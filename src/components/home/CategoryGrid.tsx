@@ -26,7 +26,7 @@ export default function CategoryGrid() {
   };
 
   return (
-    <section className="py-20 bg-slate-50 dark:bg-slate-950">
+    <section className="py-20 bg-surface">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -61,10 +61,10 @@ export default function CategoryGrid() {
                     </div>
                     <ArrowUpRight className="h-5 w-5 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity" />
                   </div>
-                  
+
                   <h3 className="text-xl font-semibold mt-4 mb-2">{category.name}</h3>
                   <p className="text-sm text-muted-foreground mb-4">{category.description}</p>
-                  
+
                   <div className="flex items-center justify-between">
                     <span className="text-sm font-medium text-amber-500">
                       {category.productCount} Products

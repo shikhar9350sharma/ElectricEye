@@ -1,57 +1,166 @@
 @import "tailwindcss";
 
+/* ============================================
+   THEME TOKENS - ElectricEye 2026
+   ============================================ */
+
+/* --- LIGHT THEME: Clean Warm Light --- */
 @theme {
-  --color-background: hsl(0 0% 100%);
-  --color-foreground: hsl(222.2 84% 4.9%);
-  --color-card: hsl(0 0% 100%);
-  --color-card-foreground: hsl(222.2 84% 4.9%);
-  --color-popover: hsl(0 0% 100%);
-  --color-popover-foreground: hsl(222.2 84% 4.9%);
-  --color-primary: hsl(45 93% 47%);
-  --color-primary-foreground: hsl(222.2 47.4% 11.2%);
-  --color-secondary: hsl(210 40% 96.1%);
-  --color-secondary-foreground: hsl(222.2 47.4% 11.2%);
-  --color-muted: hsl(210 40% 96.1%);
-  --color-muted-foreground: hsl(215.4 16.3% 46.9%);
-  --color-accent: hsl(210 40% 96.1%);
-  --color-accent-foreground: hsl(222.2 47.4% 11.2%);
-  --color-destructive: hsl(0 84.2% 60.2%);
-  --color-destructive-foreground: hsl(210 40% 98%);
-  --color-border: hsl(214.3 31.8% 91.4%);
-  --color-input: hsl(214.3 31.8% 91.4%);
-  --color-ring: hsl(45 93% 47%);
+  --color-background: #FAFAF8;
+  --color-foreground: #1C1917;
+  --color-card: #FFFFFF;
+  --color-card-foreground: #1C1917;
+  --color-popover: #FFFFFF;
+  --color-popover-foreground: #1C1917;
+  
+  --color-primary: #D97706;
+  --color-primary-foreground: #FFFFFF;
+  
+  --color-secondary: #F5F5F4;
+  --color-secondary-foreground: #44403C;
+  
+  --color-muted: #E7E5E4;
+  --color-muted-foreground: #78716C;
+  
+  --color-accent: #0D9488;
+  --color-accent-foreground: #FFFFFF;
+  
+  --color-destructive: #DC2626;
+  --color-destructive-foreground: #FFFFFF;
+  
+  --color-border: #E7E5E4;
+  --color-input: #E7E5E4;
+  --color-ring: #D97706;
+  
+  --color-glow: #F59E0B;
+  --color-surface: #F5F5F4;
+  --color-hero-bg: #FFFBEB;
+  
   --radius: 0.75rem;
 }
 
+/* --- DARK THEME: Deep Charcoal --- */
 .dark {
-  --color-background: hsl(222.2 84% 4.9%);
-  --color-foreground: hsl(210 40% 98%);
-  --color-card: hsl(222.2 84% 4.9%);
-  --color-card-foreground: hsl(210 40% 98%);
-  --color-popover: hsl(222.2 84% 4.9%);
-  --color-popover-foreground: hsl(210 40% 98%);
-  --color-primary: hsl(45 93% 47%);
-  --color-primary-foreground: hsl(222.2 47.4% 11.2%);
-  --color-secondary: hsl(217.2 32.6% 17.5%);
-  --color-secondary-foreground: hsl(210 40% 98%);
-  --color-muted: hsl(217.2 32.6% 17.5%);
-  --color-muted-foreground: hsl(215 20.2% 65.1%);
-  --color-accent: hsl(217.2 32.6% 17.5%);
-  --color-accent-foreground: hsl(210 40% 98%);
-  --color-destructive: hsl(0 62.8% 30.6%);
-  --color-destructive-foreground: hsl(210 40% 98%);
-  --color-border: hsl(217.2 32.6% 17.5%);
-  --color-input: hsl(217.2 32.6% 17.5%);
-  --color-ring: hsl(45 93% 47%);
+  --color-background: #0C0A09;
+  --color-foreground: #FAFAF9;
+  --color-card: #1C1917;
+  --color-card-foreground: #FAFAF9;
+  --color-popover: #1C1917;
+  --color-popover-foreground: #FAFAF9;
+  
+  --color-primary: #F59E0B;
+  --color-primary-foreground: #0C0A09;
+  
+  --color-secondary: #292524;
+  --color-secondary-foreground: #FAFAF9;
+  
+  --color-muted: #44403C;
+  --color-muted-foreground: #A8A29E;
+  
+  --color-accent: #22D3EE;
+  --color-accent-foreground: #0C0A09;
+  
+  --color-destructive: #EF4444;
+  --color-destructive-foreground: #FFFFFF;
+  
+  --color-border: #44403C;
+  --color-input: #44403C;
+  --color-ring: #F59E0B;
+  
+  --color-glow: #FBBF24;
+  --color-surface: #1C1917;
+  --color-hero-bg: #0C0A09;
 }
+
+/* ============================================
+   BASE STYLES + SCROLLBAR HIDE
+   ============================================ */
 
 @layer base {
   * {
     border-color: var(--color-border);
   }
 
-  body {
+  html, body {
     background-color: var(--color-background);
     color: var(--color-foreground);
+    scrollbar-width: none;
+    -ms-overflow-style: none;
   }
+
+  html::-webkit-scrollbar,
+  body::-webkit-scrollbar {
+    display: none;
+    width: 0;
+    height: 0;
+  }
+
+  ::selection {
+    background-color: var(--color-primary);
+    color: var(--color-primary-foreground);
+  }
+}
+
+/* ============================================
+   CUSTOM UTILITIES
+   ============================================ */
+
+@utility text-glow {
+  text-shadow: 0 0 20px var(--color-glow);
+}
+
+@utility glow-amber {
+  box-shadow: 0 0 30px -5px rgba(245, 158, 11, 0.3);
+}
+
+@utility glow-cyan {
+  box-shadow: 0 0 30px -5px rgba(34, 211, 238, 0.2);
+}
+
+@utility glass {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.dark .glass {
+  background: rgba(28, 25, 23, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+@utility gradient-text {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+@utility hero-bg {
+  background: linear-gradient(135deg, 
+    var(--color-hero-bg) 0%, 
+    var(--color-surface) 50%, 
+    var(--color-background) 100%
+  );
+}
+
+@utility grid-pattern {
+  background-image: 
+    linear-gradient(rgba(0,0,0,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,0,0,0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.dark .grid-pattern {
+  background-image: 
+    linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+}
+
+/* ============================================
+   SCROLLBAR HIDE CLASS (for specific elements)
+   ============================================ */
+
+@utility scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
