@@ -1,10 +1,11 @@
 import { products } from '@/lib/data';
 import { notFound } from 'next/navigation';
-import { Lightbulb, Star, Check, ShoppingCart, Heart } from 'lucide-react';
+import { Star, Check, ShoppingCart, Heart } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import ProductImage from '@/components/shared/ProductImage';
 
 export async function generateStaticParams() {
   return products.map((p) => ({ id: p.id }));
@@ -18,10 +19,16 @@ export default function ProductPage({ params }: { params: { id: string } }) {
     <div className="container mx-auto px-4 py-12">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
         {/* Image */}
-        <div className="relative h-[500px] rounded-2xl bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-800 dark:to-slate-900 flex items-center justify-center">
-          <Lightbulb className="h-40 w-40 text-amber-500/30" />
+        <div className="relative h-[400px] md:h-[500px] rounded-2xl bg-muted overflow-hidden">
+          <ProductImage
+            src={product.image}
+            alt={product.name}
+            fill
+            priority
+            className="rounded-2xl"
+          />
           {product.badge && (
-            <Badge className="absolute top-4 left-4 bg-amber-500 text-slate-950 font-semibold text-sm px-3 py-1">
+            <Badge className="absolute top-4 left-4 bg-primary text-primary-foreground font-semibold text-sm px-3 py-1">
               {product.badge}
             </Badge>
           )}
@@ -30,7 +37,7 @@ export default function ProductPage({ params }: { params: { id: string } }) {
         {/* Details */}
         <div>
           <div className="flex items-center gap-2 mb-4">
-            <Badge variant="outline" className="text-amber-500 border-amber-500">
+            <Badge variant="outline" className="text-primary border-primary">
               {product.category.replace('-', ' ').toUpperCase()}
             </Badge>
             <div className="flex items-center gap-1">
@@ -39,14 +46,13 @@ export default function ProductPage({ params }: { params: { id: string } }) {
             </div>
           </div>
 
-          <h1 className="text-3xl md:text-4xl font-bold mb-4">{product.name}</h1>
-          <p className="text-3xl font-bold text-amber-500 mb-6">₹{product.price}</p>
+          <h1 className="text-3xl md:text-4xl font-bold mb-4 text-foreground">{product.name}</h1>
+          <p className="text-3xl font-bold text-primary mb-6">₹{product.price}</p>
           
           <p className="text-muted-foreground text-lg mb-8 leading-relaxed">
             {product.description}
           </p>
 
-          {/* Quick Specs */}
           <div className="grid grid-cols-2 gap-4 mb-8">
             {[
               { label: 'Wattage', value: product.wattage },
@@ -54,16 +60,15 @@ export default function ProductPage({ params }: { params: { id: string } }) {
               { label: 'Lifespan', value: product.lifespan },
               { label: 'Color Temp', value: product.colorTemp },
             ].map((spec) => (
-              <div key={spec.label} className="p-4 rounded-lg bg-slate-50 dark:bg-slate-900">
+              <div key={spec.label} className="p-4 rounded-lg bg-muted">
                 <div className="text-sm text-muted-foreground">{spec.label}</div>
-                <div className="font-semibold">{spec.value}</div>
+                <div className="font-semibold text-foreground">{spec.value}</div>
               </div>
             ))}
           </div>
 
-          {/* Actions */}
           <div className="flex gap-4 mb-8">
-            <Button size="lg" className="flex-1 bg-amber-500 hover:bg-amber-600 text-slate-950 font-semibold">
+            <Button size="lg" className="flex-1 bg-primary hover:bg-primary/90 text-primary-foreground font-semibold">
               <ShoppingCart className="mr-2 h-5 w-5" />
               Add to Cart
             </Button>
@@ -74,7 +79,6 @@ export default function ProductPage({ params }: { params: { id: string } }) {
 
           <Separator className="my-8" />
 
-          {/* Tabs */}
           <Tabs defaultValue="features">
             <TabsList className="w-full">
               <TabsTrigger value="features" className="flex-1">Features</TabsTrigger>
@@ -87,7 +91,7 @@ export default function ProductPage({ params }: { params: { id: string } }) {
                     <div className="h-6 w-6 rounded-full bg-green-500/10 flex items-center justify-center">
                       <Check className="h-4 w-4 text-green-500" />
                     </div>
-                    <span>{feature}</span>
+                    <span className="text-foreground">{feature}</span>
                   </li>
                 ))}
               </ul>
@@ -103,9 +107,9 @@ export default function ProductPage({ params }: { params: { id: string } }) {
                   'Rated Life': product.lifespan,
                   'Warranty': '5 Years',
                 }).map(([key, value]) => (
-                  <div key={key} className="flex justify-between py-2 border-b">
+                  <div key={key} className="flex justify-between py-2 border-b border-border">
                     <span className="text-muted-foreground">{key}</span>
-                    <span className="font-medium">{value}</span>
+                    <span className="font-medium text-foreground">{value}</span>
                   </div>
                 ))}
               </div>

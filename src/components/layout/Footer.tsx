@@ -4,7 +4,6 @@ import { Lightbulb, Mail, Phone, MapPin } from 'lucide-react';
 import Link from 'next/link';
 import { Separator } from '@/components/ui/separator';
 
-// Simple SVG social icons (no extra packages needed)
 function FacebookIcon({ className }: { className?: string }) {
   return (
     <svg className={className} viewBox="0 0 24 24" fill="currentColor">
@@ -46,20 +45,20 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="bg-background text-muted-foreground border-t border-border/50">
+    <footer className="bg-[#1C1917] text-[#E7E5E4] border-t border-[#44403C]">
       <div className="container mx-auto px-4 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
-
+          
           {/* Brand */}
           <div className="space-y-4">
             <Link href="/" className="flex items-center gap-2">
-              <Lightbulb className="h-7 w-7 text-amber-500" />
+              <Lightbulb className="h-7 w-7 text-[#F59E0B]" />
               <span className="text-xl font-bold text-white">
-                Electric<span className="text-amber-500">Eye</span>
+                Electric<span className="text-[#F59E0B]">Eye</span>
               </span>
             </Link>
-            <p className="text-sm leading-relaxed text-slate-400">
-              Premium lighting solutions for homes, offices, and industries.
+            <p className="text-sm leading-relaxed text-[#A8A29E]">
+              Premium lighting solutions for homes, offices, and industries. 
               Energy-efficient, durable, and designed for modern living.
             </p>
             <div className="flex gap-3">
@@ -68,7 +67,7 @@ export default function Footer() {
                   key={label}
                   href="#"
                   aria-label={label}
-                  className="h-9 w-9 rounded-full bg-muted flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-all duration-300"
+                  className="h-9 w-9 rounded-full bg-[#292524] flex items-center justify-center hover:bg-[#F59E0B] hover:text-[#0C0A09] transition-all duration-300 text-[#A8A29E]"
                 >
                   <Icon className="h-4 w-4" />
                 </a>
@@ -82,8 +81,10 @@ export default function Footer() {
             <ul className="space-y-3 text-sm">
               {['Home', 'Products', 'About Us', 'Contact', 'Blog'].map((item) => (
                 <li key={item}>
-                  <Link href={item === 'Home' ? '/' : `/${item.toLowerCase().replace(' ', '-')}`}
-                    className="hover:text-amber-500 transition-colors">
+                  <Link 
+                    href={item === 'Home' ? '/' : `/${item.toLowerCase().replace(' ', '-')}`} 
+                    className="text-[#A8A29E] hover:text-[#F59E0B] transition-colors"
+                  >
                     {item}
                   </Link>
                 </li>
@@ -97,7 +98,7 @@ export default function Footer() {
             <ul className="space-y-3 text-sm">
               {['LED Bulbs', 'Tube Lights', 'Sensor Lights', 'Radar Sensors', 'Panel Lights', 'Flood Lights'].map((item) => (
                 <li key={item}>
-                  <Link href="/products" className="hover:text-amber-500 transition-colors">
+                  <Link href="/products" className="text-[#A8A29E] hover:text-[#F59E0B] transition-colors">
                     {item}
                   </Link>
                 </li>
@@ -110,29 +111,29 @@ export default function Footer() {
             <h4 className="text-white font-semibold mb-4">Contact Us</h4>
             <ul className="space-y-4 text-sm">
               <li className="flex items-start gap-3">
-                <MapPin className="h-5 w-5 text-amber-500 shrink-0" />
-                <span>123 Industrial Area, Phase 2<br />New Delhi, 110020, India</span>
+                <MapPin className="h-5 w-5 text-[#F59E0B] shrink-0" />
+                <span className="text-[#A8A29E]">123 Industrial Area, Phase 2<br />New Delhi, 110020, India</span>
               </li>
               <li className="flex items-center gap-3">
-                <Phone className="h-5 w-5 text-amber-500 shrink-0" />
-                <span>+91 98765 43210</span>
+                <Phone className="h-5 w-5 text-[#F59E0B] shrink-0" />
+                <span className="text-[#A8A29E]">+91 98765 43210</span>
               </li>
               <li className="flex items-center gap-3">
-                <Mail className="h-5 w-5 text-amber-500 shrink-0" />
-                <span>support@electriceye.com</span>
+                <Mail className="h-5 w-5 text-[#F59E0B] shrink-0" />
+                <span className="text-[#A8A29E]">support@electriceye.com</span>
               </li>
             </ul>
           </div>
         </div>
 
-        <Separator className="my-10 bg-slate-800" />
+        <Separator className="my-10 bg-[#44403C]" />
 
-        <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-slate-500">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-[#78716C]">
           <p>© 2026 ElectricEye. All rights reserved.</p>
           <div className="flex gap-6">
-            <Link href="#" className="hover:text-amber-500 transition-colors">Privacy Policy</Link>
-            <Link href="#" className="hover:text-amber-500 transition-colors">Terms of Service</Link>
-            <Link href="#" className="hover:text-amber-500 transition-colors">Refund Policy</Link>
+            <Link href="#" className="hover:text-[#F59E0B] transition-colors">Privacy Policy</Link>
+            <Link href="#" className="hover:text-[#F59E0B] transition-colors">Terms of Service</Link>
+            <Link href="#" className="hover:text-[#F59E0B] transition-colors">Refund Policy</Link>
           </div>
         </div>
       </div>

@@ -1,7 +1,9 @@
-import type { NextConfig } from "next";
-
-const nextConfig: NextConfig = {
-  /* config options here */
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  images: {
+    formats: ['image/webp', 'image/avif'],
+    minimumCacheTTL: 2678400, // 31 days
+  },
 };
 
-export default nextConfig;
+module.exports = nextConfig;
